@@ -1,0 +1,81 @@
+/*Dashed road*/
+
+.dashed-tail {
+	display: flex;
+	justify-content: space-between;
+	width: 37.545%;
+	height: 20px;
+	background-color: pink;
+	position: absolute;
+	top: 50%;
+}
+
+.dashed-tail--right {
+	left: 100%;
+}
+
+.dashed-tail--left {
+	left: unset;
+	right: 100%;
+}
+
+.dashed-tail--high {
+	top: 42%;
+}
+
+.dashed-tail--y-flipped {
+	transform: scaleY(-1);
+}
+
+.dashed-tail--x-flipped {
+	transform: scaleX(-1);
+}
+
+.dashed-tail--xy-flipped {
+	transform: scale(-1, -1);
+}
+
+.dashed-tail--vertical {
+	top: 100%;
+	left: 36%;
+	transform: rotate(90deg) translateX(44%);
+}
+
+.dashed-tail--vertical-x-flipped {
+	top: 100%;
+	right: 32%;
+	transform: scaleX(-1) rotate(90deg) translateX(44%);
+}
+
+.dashed-tail__strip {
+	position: relative;
+	width: 12px;
+	height: 4px;
+	background-color: black;
+}
+
+.dashed-tail__strip:nth-child(1){
+    top: 80%;
+    transform: rotate(-25deg);
+}
+
+.dashed-tail__strip:nth-child(2){
+    top: 44%;
+    transform: rotate(-18deg);
+}
+
+.dashed-tail__strip:nth-child(3){
+    top: 13%;
+    transform: rotate(-11deg);
+}
+
+.dashed-tail__strip:nth-child(5){
+    top: 13%;
+    transform: rotate(12deg);
+}
+
+.dashed-tail__strip:nth-child(6){
+    top: 34%;
+    transform: rotate(20deg);
+}
+
