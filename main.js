@@ -13,10 +13,11 @@ processDeviceWidth();
 
 //Functions
 
-function resetTails() {
-	tails.forEach(item => {
-		item.className = 'dashed-tail';
-	});	
+function processDeviceWidth() {
+	resetTails();
+	processTabletWidth();
+	processDesktopWidth();
+	processMobileWidth();
 }
 
 function processDesktopWidth() {
@@ -73,14 +74,18 @@ function processDesktopWidth() {
 
 		if(cards.length % 3 == 0 && cards.length % 6 != 0) {
 			tails[tails.length-1].style.display = 'none';
-		} else if (cards.length % 6 == 0) {
+		} 
+		else if (cards.length % 6 == 0) {
 			tails[tails.length - 3].style.display = 'none';
-		} else if ((cards.length + (3 - (cards.length % 3))) % 2 != 0) {
+		} 
+		else if ((cards.length + (3 - (cards.length % 3))) % 2 != 0) {
 			tails[tails.length-1].style.display = 'none';
-		} else if ((cards.length + (3 - (cards.length % 3))) % 2 == 0) {
+		} 
+		else if ((cards.length + (3 - (cards.length % 3))) % 2 == 0) {
 			cards[cards.length - cards.length % 3].style.marginLeft = 'auto';
 			tails[tails.length - tails.length % 3].style.display = 'none';
-		} else {
+		} 
+		else {
 			throw new Error('Unexpected state');
 		}
 	}
@@ -115,15 +120,19 @@ function processTabletWidth() {
 
 		if(cards.length % 2 == 0 && cards.length % 4 != 0) {
 			tails[tails.length-1].style.display = 'none';
-		} else if (cards.length % 4 == 0) {
+		} 
+		else if (cards.length % 4 == 0) {
 			tails[tails.length - 2].style.display = 'none';
-		} else if ((cards.length + 1) % 2 == 0 && (cards.length + 1) % 4 != 0) {
+		} 
+		else if ((cards.length + 1) % 2 == 0 && (cards.length + 1) % 4 != 0) {
 			tails[tails.length-1].style.display = 'none';
-		} else if ((cards.length + 1) % 4 == 0) {
+		} 
+		else if ((cards.length + 1) % 4 == 0) {
 			console.log((cards.length + 1) % 4);
 			cards[cards.length - cards.length % 2].style.marginLeft = 'auto';
 			tails[tails.length - tails.length % 2].style.display = 'none';
-		} else {
+		} 
+		else {
 			throw new Error('Unexpected state');
 		}
 	}
@@ -136,10 +145,13 @@ function processMobileWidth() {
 	}
 }
 
-function processDeviceWidth() {
-	resetTails();
-	processTabletWidth();
-	processDesktopWidth();
-	processMobileWidth();
+function resetTails() {
+	tails.forEach(item => {
+		item.className = 'dashed-tail';
+		item.style.display = 'flex';
+	});	
 }
+
+
+
 
