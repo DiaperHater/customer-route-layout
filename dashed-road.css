@@ -55,7 +55,7 @@
 }
 
 .dashed-tail__strip:nth-child(1){
-    top: 18px;
+    top: 16px;
     transform: rotate(-25deg);
 }
 
