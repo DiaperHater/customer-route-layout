@@ -1,18 +1,17 @@
-const cards = document.querySelectorAll('.step-card');
-const tails = document.querySelectorAll('.dashed-tail');
+const stepCards = document.querySelector('.customer-route__steps');
+const cardsOrigin = document.querySelectorAll('.step-card');
+let cards = document.querySelectorAll('.step-card');
+let tails = document.querySelectorAll('.dashed-tail');
+//////////////////////////////////////////////////////////////////
 
 
 
-
-//DashedRoad
-window.addEventListener('resize', processDeviceWidth);
 processDeviceWidth();
+window.addEventListener('resize', processDeviceWidth);
 
 
 
-
-//Functions
-
+//Functions/////////////////////////////////////////////////////
 function processDeviceWidth() {
 	resetTails();
 	processTabletWidth();
@@ -23,6 +22,8 @@ function processDeviceWidth() {
 function processDesktopWidth() {
 	const desktopScreen = window.matchMedia("(min-width: 1001px)");
 	if(desktopScreen.matches) {
+
+		reorderCardsForDesktop();
 
 		tails.forEach((tail, index) => {
 			
@@ -90,10 +91,33 @@ function processDesktopWidth() {
 		}
 	}
 }
+function reorderCardsForDesktop() {
+		cards = cardsOrigin;
+
+		cards.forEach( (item, index) => {
+			if ((index-3) % 6 == 0 ) {
+				stepCards.append(cards[index+2])
+			} 
+			else if ((index-4) % 6 == 0 ) {
+				stepCards.append(cards[index]);
+			}  
+			else if ((index-5) % 6 == 0 ) {
+				stepCards.append(cards[index-2])
+			}
+			else {
+				stepCards.append(cards[index]);
+			} 
+	
+		});
+
+		refreshLists();		
+}
 
 function processTabletWidth() {
 	const tabletScreen = window.matchMedia("(max-width: 1000px)");
 	if (tabletScreen.matches) {
+
+		reorderCardsForTablet();
 
 		tails.forEach((tail, index) => {
 
@@ -137,19 +161,54 @@ function processTabletWidth() {
 		}
 	}
 }
+function reorderCardsForTablet() {
+		cards = cardsOrigin;
+
+		cards.forEach( (item, index) => {
+			if ((index-2) % 4 == 0 ) {
+				stepCards.append(cards[index+1])
+			} 
+			else if ((index-3) % 4 == 0 ) {
+				stepCards.append(cards[index-1]);
+			}  
+			else {
+				stepCards.append(cards[index]);
+			} 
+	
+		});
+
+		refreshLists();		
+}
 
 function processMobileWidth() {
-	const tabletScreen = window.matchMedia("(max-width: 620px)");
-	if(tabletScreen.matches) {
+	const mobileScreen = window.matchMedia("(max-width: 620px)");
+	
+	if(mobileScreen.matches) {
+		reorderCardsForMobile();		
 		resetTails();
 	}
 }
+function reorderCardsForMobile() {
+	cards = cardsOrigin;
+	
+	cards.forEach(item => {
+		stepCards.append(item);
+	});
+
+	refreshLists();
+}
+
 
 function resetTails() {
 	tails.forEach(item => {
 		item.className = 'dashed-tail';
 		item.style.display = 'flex';
 	});	
+}
+
+function refreshLists() {
+	cards = document.querySelectorAll('.step-card');
+	tails = document.querySelectorAll('.dashed-tail');
 }
 
 
