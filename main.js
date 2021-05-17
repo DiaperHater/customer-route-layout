@@ -20,7 +20,7 @@ function processDeviceWidth() {
 }
 
 function processDesktopWidth() {
-	const desktopScreen = window.matchMedia("(min-width: 1001px)");
+	const desktopScreen = window.matchMedia("(min-width: 1101px)");
 	if(desktopScreen.matches) {
 
 		reorderCardsForDesktop();
@@ -114,7 +114,7 @@ function reorderCardsForDesktop() {
 }
 
 function processTabletWidth() {
-	const tabletScreen = window.matchMedia("(max-width: 1000px)");
+	const tabletScreen = window.matchMedia("(max-width: 1100px)");
 	if (tabletScreen.matches) {
 
 		reorderCardsForTablet();
